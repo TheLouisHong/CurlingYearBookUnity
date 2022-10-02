@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/LouisStuff/PhotoCamera.unity
+    guid: 1e9721d56febb0945a62ae396ba90455
+  - enabled: 1
+    path: Assets/LouisStuff/Yearbook.unity
+    guid: d3f5912676a6d8b4fa852d1305cd3814
   m_configObjects: {}

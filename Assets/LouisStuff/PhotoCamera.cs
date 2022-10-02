@@ -9,6 +9,7 @@ public class PhotoCamera : MonoBehaviour
     public PhotoPresenter photoPresenter;
     RenderTexture savephotoRenderTexture;
     Texture2D savephotoTexture;
+    PhotoCollection photoCollection;
 
     // Start is called before the first frame update
     void Awake()
@@ -24,6 +25,9 @@ public class PhotoCamera : MonoBehaviour
 
         // create savephotoTexture
         savephotoTexture = new Texture2D(renderTexture.width, renderTexture.height, TextureFormat.RGBA32, false, false);
+
+        // get PhotoCollection
+        photoCollection = FindObjectOfType<PhotoCollection>();
     }
 
     private void OnRenderImage(RenderTexture src, RenderTexture dest) {
@@ -49,6 +53,10 @@ public class PhotoCamera : MonoBehaviour
         System.IO.File.WriteAllBytes(Application.dataPath + "/../photo.png", bytes);
 
         photoPresenter.Present(photoTexture);
+
+        if (photoCollection != null) {
+            photoCollection.AddPhoto(savephotoTexture);
+        }
     }
 
     private void OnDestroy() {
